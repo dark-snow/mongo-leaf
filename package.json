@@ -1,5 +1,5 @@
 {
-  "name": "hobby",
+  "name": "dark-snow-model",
   "version": "0.3.0",
   "description": "A noSql data modeler for MongoDB",
   "main": "index.js",
