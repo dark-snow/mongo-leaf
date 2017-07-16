@@ -1,12 +1,11 @@
 const assert = require('assert');
-const Model = require('../index.js').Model;
-let x = new Model('User', {}, { collection: "users" });
+const User = require('./models/User.model.js');
 
 module.exports = function () {
     describe("Remove Tests", () => {
         it("Should remove { nickname: 'susu' } ", () => {
-            x.remove({ nickname: "susu" }).then(() => {
-                x.count({ nickname: "susu" }).then((data) => {
+            User.remove({ nickname: "susu" }).then(() => {
+                User.count({ nickname: "susu" }).then((data) => {
                     assert.equal(data, 0);
                 }).catch((err) => {
                     console.log(err);
@@ -18,8 +17,8 @@ module.exports = function () {
             });
         });
         it("Should remove everything", () => {
-            x.remove({}).then((data) => {
-                x.count({}).then((data) => {
+            User.remove({}).then((data) => {
+                User.count({}).then((data) => {
                     assert.equal(data, 0);
                 }).catch((err) => {
                     console.log(err);

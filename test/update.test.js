@@ -1,12 +1,11 @@
 const assert = require('assert');
-const Model = require('../index.js').Model;
-let x = new Model('User', {}, { collection: "users" });
+const User = require('./models/User.model.js');
 
 module.exports = function () {
     describe("Update Tests", () => {
         it("Should update { nickname: 'heiyuki' } to { nickname: 'banzai' } ", () => {
-            x.update({ nickname: "heiyuki" }, { $set: { nickname: "banzai" } }).then(() => {
-                x.count({ nickname: "heiyuki" }).then((data) => {
+            User.update({ nickname: "heiyuki" }, { $set: { nickname: "banzai" } }).then(() => {
+                User.count({ nickname: "heiyuki" }).then((data) => {
                     assert.equal(data, 0);
                 }).catch((err) => {
                     console.log(err);
@@ -18,8 +17,8 @@ module.exports = function () {
             });
         });
         it("Should update All Nicknames to 'susu'", () => {
-            x.update({}, { $set: { nickname: "susu" } }, { multi: true }).then(() => {
-                x.count({ nickname: "susu" }).then((data) => {
+            User.update({}, { $set: { nickname: "susu" } }, { multi: true }).then(() => {
+                User.count({ nickname: "susu" }).then((data) => {
                     assert.equal(data, 3);
                 }).catch((err) => {
                     console.log(err);

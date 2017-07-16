@@ -1,9 +1,6 @@
 const assert = require('assert');
 const connect = require('../index.js').connect;
-const Model = require('../index.js').Model;
-
-
-let x = new Model('User', {}, { collection: "users" });
+const User = require('./models/User.model.js');
 
 describe("Mongo Interraction", () => {
     it("Should connect", (done) => {
@@ -20,6 +17,3 @@ require('./insert.test.js')();
 require('./find.test.js')();
 require('./update.test.js')();
 require('./remove.test.js')();
-
-
-
