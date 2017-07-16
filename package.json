@@ -1,10 +1,10 @@
 {
-  "name": "scaledb",
-  "version": "0.0.0",
-  "description": "An ODM for MongoDB with scaling in mind",
+  "name": "hobby",
+  "version": "0.2.0",
+  "description": "A noSql data modeler for MongoDB with scaling in mind",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --timeout 5000"
   },
   "keywords": [
     "MongoDB",
@@ -13,6 +13,14 @@
     "scaling",
     "noSQL"
   ],
-  "author": "khaled romdhane <heiyukidev@gmail.com>",
-  "license": "MIT"
+  "author": "Khaled Romdhane <heiyukidev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "mocha": "^3.4.2"
+  },
+  "dependencies": {
+    "hyvalidator": "^0.9.0",
+    "mongodb": "^2.2.30"
+  }
 }
