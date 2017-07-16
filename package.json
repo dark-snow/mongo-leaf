@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heiyukidev/hobby.git"
+    "url": "git+https://github.com/dark-snow/model"
   },
   "bugs": {
-    "url": "https://github.com/heiyukidev/hobby/issues"
+    "url": "https://github.com/dark-snow/model/issues"
   },
-  "homepage": "https://github.com/heiyukidev/hobby#readme"
+  "homepage": "https://github.com/dark-snow/model#readme"
 }
