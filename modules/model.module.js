@@ -68,7 +68,11 @@ class Model {
                     if (err) {
                         reject(err);
                     }
-                    resolve(result);
+                    if (result.length > 0) {
+                        resolve(result[0]);
+                    } else {
+                        resolve({});
+                    }
                 });
         });
     }
@@ -133,7 +137,7 @@ class Model {
     /////////////////////////////////////////////////////////////
     removeById(id) {
         return new Promise((resolve, reject) => {
-            global._db.collection(this.collection).remove({_id:ObjectId(id)}, (err, data) => {
+            global._db.collection(this.collection).remove({ _id: ObjectId(id) }, (err, data) => {
                 if (err) {
                     reject(err);
                 }

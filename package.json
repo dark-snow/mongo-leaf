@@ -1,6 +1,6 @@
 {
   "name": "dark-snow-model",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A noSql data modeler for MongoDB",
   "main": "index.js",
   "scripts": {
