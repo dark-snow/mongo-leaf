@@ -1,5 +1,5 @@
 const registry = require('./registry.module.js');
-
+const ObjectId = require('mongodb').ObjectID;
 function _formatFindOptions(options) {
     if (!options.limit) {
         options.limit = 0;
@@ -54,6 +54,25 @@ class Model {
         });
     }
     /////////////////////////////////////////////////////////////
+    ////////Find By Id Function
+    /////////////////////////////////////////////////////////////
+    findById(id, field, options) {
+        let _options = new Object();
+        Object.assign(_options, options);
+        _options = _formatFindOptions(_options);
+        return new Promise((resolve, reject) => {
+            global._db.collection(this.collection)
+                .find({ _id: ObjectId(id) }, field)
+                .limit(_options.limit)
+                .skip(_options.skip).toArray(function (err, result) {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                });
+        });
+    }
+    /////////////////////////////////////////////////////////////
     ////////Insert Function
     /////////////////////////////////////////////////////////////
     insert(document) {
@@ -84,7 +103,20 @@ class Model {
         });
     }
     /////////////////////////////////////////////////////////////
-    ////////delete Function
+    ////////update by Id Function
+    /////////////////////////////////////////////////////////////
+    updateById(id, document) {
+        return new Promise((resolve, reject) => {
+            global._db.collection(this.collection).update({ _id: ObjectId(id) }, document, { multi: false, upsert: false }, (err, data) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(data);
+            });
+        });
+    }
+    /////////////////////////////////////////////////////////////
+    ////////remove Function
     /////////////////////////////////////////////////////////////
     remove(query) {
         return new Promise((resolve, reject) => {
@@ -97,11 +129,24 @@ class Model {
         });
     }
     /////////////////////////////////////////////////////////////
+    ////////remove by Id Function
+    /////////////////////////////////////////////////////////////
+    removeById(id) {
+        return new Promise((resolve, reject) => {
+            global._db.collection(this.collection).remove({_id:ObjectId(id)}, (err, data) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(data);
+            });
+        });
+    }
+    /////////////////////////////////////////////////////////////
     ////////Count Function
     /////////////////////////////////////////////////////////////
     count(query) {
         return new Promise((resolve, reject) => {
-            global._db.collection(this.collection).count(query,(err, data) => {
+            global._db.collection(this.collection).count(query, (err, data) => {
                 if (err) {
                     reject(err);
                 }
