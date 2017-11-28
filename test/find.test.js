@@ -7,7 +7,6 @@ module.exports = function () {
     describe("Find Tests", () => {
         it("Should Find All Users With All Fields", (done) => {
             User.find().then((data) => {
-                console.log(data);
                 done();
             }).catch((err) => {
                 console.log(err);
@@ -16,7 +15,6 @@ module.exports = function () {
         });
         it("Should Find All Users With the nickname field Only", (done) => {
             User.find({}, { nickname: 1, _id: 0 }).then((data) => {
-                console.log(data);
                 done();
             }).catch((err) => {
                 console.log(err);
@@ -28,7 +26,6 @@ module.exports = function () {
                 limit: 1
             }
             User.find({}, { nickname: 1, _id: 0 }, options).then((data) => {
-                console.log(data);
                 done();
             }).catch((err) => {
                 console.log(err);
@@ -41,7 +38,6 @@ module.exports = function () {
                 skip: 1
             }
             User.find({}, { nickname: 1, _id: 0 }, options).then((data) => {
-                console.log(data);
                 done();
             }).catch((err) => {
                 console.log(err);
