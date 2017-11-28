@@ -79,25 +79,24 @@ class Model {
     /////////////////////////////////////////////////////////////
     ////////Insert Function
     /////////////////////////////////////////////////////////////
-    async insert(document) {
-        if(document && document.length){
-            global._db.collection(this.collection).insertMany(document, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-                return data.ops;
-            });
-        } else {
-            global._db.collection(this.collection).insertOne(document, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-                return data.ops[0];
-            });
+    async insertOne(document) {
+        global._db.collection(this.collection).insertOne(document, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            return data;
+        });
 
-        }
     }
 
+    async insertMany(documents) {
+        global._db.collection(this.collection).insertMany(documents, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            return data;
+        });
+    }
     /////////////////////////////////////////////////////////////
     ////////update Function
     /////////////////////////////////////////////////////////////
