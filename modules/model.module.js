@@ -79,15 +79,23 @@ class Model {
     /////////////////////////////////////////////////////////////
     ////////Insert Function
     /////////////////////////////////////////////////////////////
-    insert(document) {
-        return new Promise((resolve, reject) => {
-            global._db.collection(this.collection).insert(document, (err, data) => {
+    async insert(document) {
+        if(document && document.length){
+            global._db.collection(this.collection).insertMany(document, (err, data) => {
                 if (err) {
-                    reject(err);
+                    throw err;
                 }
-                resolve(data);
+                return data;
             });
-        });
+        } else {
+            global._db.collection(this.collection).insertOne(document, (err, data) => {
+                if (err) {
+                    throw err;
+                }
+                return data;
+            });
+
+        }
     }
 
     /////////////////////////////////////////////////////////////
