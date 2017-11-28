@@ -1,6 +1,6 @@
 {
   "name": "dark-snow-model",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A noSql data modeler for MongoDB",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "hyvalidator": "^0.9.0",
-    "mongodb": "^2.2.30"
+    "mongodb": "^2.2.33"
   },
   "directories": {
     "test": "test"
