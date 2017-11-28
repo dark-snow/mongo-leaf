@@ -85,14 +85,14 @@ class Model {
                 if (err) {
                     throw err;
                 }
-                return data;
+                return data.ops;
             });
         } else {
             global._db.collection(this.collection).insertOne(document, (err, data) => {
                 if (err) {
                     throw err;
                 }
-                return data;
+                return data.ops[0];
             });
 
         }
