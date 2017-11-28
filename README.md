@@ -1,2 +1,2 @@
-# Dark Snow Model
-Dark Snow Model is a noSql data modeler for MongoDB.
+# Mongo Leaf
+Mongo Leaf is a noSql minimalistic data modeler for MongoDB.
