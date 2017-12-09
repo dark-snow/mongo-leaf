@@ -1,6 +1,6 @@
 {
   "name": "mongo-leaf",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A noSql data modeler for MongoDB",
   "main": "index.js",
   "scripts": {

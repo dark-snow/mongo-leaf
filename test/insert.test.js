@@ -4,7 +4,7 @@ const User = require('./models/User.model.js');
 module.exports = function () {
     describe("Insert Tests", () => {
         it("Should Insert 1 User", (done) => {
-            User.insert({ firstName: "Khaled", lastName: "Romdhane", nickname: "heiyuki" }).then((data) => {
+            User.insertOne({ firstName: "Khaled", lastName: "Romdhane", nickname: "heiyuki" }).then((data) => {
                 done();
             }).catch((err) => {
                 console.log(err);
@@ -12,7 +12,7 @@ module.exports = function () {
             });
         });
         it("Should Insert 2 User", (done) => {
-            User.insert([{ firstName: "Yesmine", lastName: "Toutou", nickname: "Tsukki" },
+            User.insertMany([{ firstName: "Yesmine", lastName: "Toutou", nickname: "Tsukki" },
             { firstName: "Katerina", lastName: "El Maestro", nickname: "Tina" }
             ]).then((data) => {
                 done();

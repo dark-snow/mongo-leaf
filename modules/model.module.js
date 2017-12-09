@@ -79,22 +79,25 @@ class Model {
     /////////////////////////////////////////////////////////////
     ////////Insert Function
     /////////////////////////////////////////////////////////////
-    async insertOne(document) {
-        global._db.collection(this.collection).insertOne(document, (err, data) => {
-            if (err) {
-                throw err;
-            }
-            return data;
-        });
-
+    insertOne(document) {
+        return new Promise((resolve, reject) => {
+            global._db.collection(this.collection).insertOne(document, (err, data) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(data);
+            });
+        })
     }
 
-    async insertMany(documents) {
-        global._db.collection(this.collection).insertMany(documents, (err, data) => {
-            if (err) {
-                throw err;
-            }
-            return data;
+    insertMany(documents) {
+        return new Promise((resolve, reject) => {
+            global._db.collection(this.collection).insertMany(documents, (err, data) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(data);
+            });
         });
     }
     /////////////////////////////////////////////////////////////
